@@ -5,44 +5,63 @@ function History() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetchHistory().then((data) => {
-      setHistory(data); // IMPORTANT: store full array
-    });
+    fetchHistory().then(setHistory);
   }, []);
 
   return (
-    <div>
-      <h2>Past Quizzes</h2>
+    <div
+      style={{
+        marginTop: "2rem",
+        background: "#141414",
+        padding: "2rem",
+        borderRadius: "16px",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+      }}
+    >
+      <h2 style={{ marginBottom: "1.5rem" }}>Past Quizzes</h2>
 
-      <table style={{
-    width: "100%",
-    borderCollapse: "collapse",
-    background: "#161616",
-    borderRadius: 12,
-    overflow: "hidden",
-  }}>
-        <thead>
-          <tr>
-            <th style={{ padding: "0.8rem", borderBottom: "1px solid #333" }}>ID</th>
-            <th>Title</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {history.length === 0 ? (
-            <tr>
-              <td style={{ padding: "0.7rem", borderBottom: "1px solid #222" }} colSpan="2">No past quizzes</td>
+      {history.length === 0 ? (
+        <p style={{ opacity: 0.6 }}>No quizzes generated yet.</p>
+      ) : (
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead>
+            <tr style={{ textAlign: "left", color: "#aaa" }}>
+              <th style={{ padding: "0.75rem" }}>ID</th>
+              <th style={{ padding: "0.75rem" }}>Title</th>
             </tr>
-          ) : (
-            history.map((quiz) => (
-              <tr key={quiz.id}>
-                <td>{quiz.id}</td>
-                <td>{quiz.title}</td>
+          </thead>
+
+          <tbody>
+            {history.map((item) => (
+              <tr
+                key={item.id}
+                style={{
+                  borderTop: "1px solid #222",
+                  transition: "background 0.2s ease",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = "#1c1c1c")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = "transparent")
+                }
+              >
+                <td style={{ padding: "0.75rem", color: "#ccc" }}>
+                  {item.id}
+                </td>
+                <td style={{ padding: "0.75rem", fontWeight: 500 }}>
+                  {item.title}
+                </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
