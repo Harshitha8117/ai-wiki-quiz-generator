@@ -3,7 +3,7 @@ from app.services.scraper import scrape_wikipedia
 from app.database import SessionLocal
 from app.models import Quiz, Question
 
-router = APIRouter(prefix="/quiz")
+router = APIRouter()
 
 @router.post("/")
 def generate(data: dict):

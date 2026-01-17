@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from app.database import SessionLocal
 from app.models import Quiz
 
-router = APIRouter(prefix="/history")
+router = APIRouter()
 
 @router.get("/")
 def get_history():
