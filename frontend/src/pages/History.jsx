@@ -1,33 +1,44 @@
 import { useEffect, useState } from "react";
 import { fetchHistory } from "../services/api";
 
-export default function History() {
-  const [items, setItems] = useState([]);
+function History() {
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetchHistory().then(setItems);
+    fetchHistory().then((data) => {
+      setHistory(data); // IMPORTANT: store full array
+    });
   }, []);
 
   return (
     <div>
       <h2>Past Quizzes</h2>
 
-      <table border="1" cellPadding="6">
+      <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Title</th>
           </tr>
         </thead>
+
         <tbody>
-          {items.map((q) => (
-            <tr key={q.id}>
-              <td>{q.id}</td>
-              <td>{q.title}</td>
+          {history.length === 0 ? (
+            <tr>
+              <td colSpan="2">No past quizzes</td>
             </tr>
-          ))}
+          ) : (
+            history.map((quiz) => (
+              <tr key={quiz.id}>
+                <td>{quiz.id}</td>
+                <td>{quiz.title}</td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
   );
 }
+
+export default History;
