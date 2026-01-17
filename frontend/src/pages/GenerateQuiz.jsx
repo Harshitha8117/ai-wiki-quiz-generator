@@ -15,7 +15,10 @@ export default function GenerateQuiz() {
       <h2>Generate Quiz</h2>
 
       <input
-        style={{ width: "60%" }}
+        style={{ background: "#161616",
+    padding: "2rem",
+    borderRadius: 14,
+    boxShadow: "0 10px 30px rgba(0,0,0,0.4)", display: "flex", gap: "1rem", marginBottom: "1.5rem", width: "60%" }}
         placeholder="Enter Wikipedia URL"
         value={url}
         onChange={(e) => setUrl(e.target.value)}

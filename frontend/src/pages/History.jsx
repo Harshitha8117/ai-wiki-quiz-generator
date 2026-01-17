@@ -14,10 +14,16 @@ function History() {
     <div>
       <h2>Past Quizzes</h2>
 
-      <table>
+      <table style={{
+    width: "100%",
+    borderCollapse: "collapse",
+    background: "#161616",
+    borderRadius: 12,
+    overflow: "hidden",
+  }}>
         <thead>
           <tr>
-            <th>ID</th>
+            <th style={{ padding: "0.8rem", borderBottom: "1px solid #333" }}>ID</th>
             <th>Title</th>
           </tr>
         </thead>
@@ -25,7 +31,7 @@ function History() {
         <tbody>
           {history.length === 0 ? (
             <tr>
-              <td colSpan="2">No past quizzes</td>
+              <td style={{ padding: "0.7rem", borderBottom: "1px solid #222" }} colSpan="2">No past quizzes</td>
             </tr>
           ) : (
             history.map((quiz) => (
