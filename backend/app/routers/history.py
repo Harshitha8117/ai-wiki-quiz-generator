@@ -14,7 +14,7 @@ def get_history():
         {
             "id": q.id,
             "url": q.url,
-            "title": q.title
+            "title": q.title,
         }
         for q in quizzes
     ]
