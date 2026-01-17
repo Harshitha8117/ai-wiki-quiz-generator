@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchHistory } from "../services/api";
+import "./History.css";
 
-function History() {
+export default function History() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
@@ -9,61 +10,21 @@ function History() {
   }, []);
 
   return (
-    <div
-      style={{
-        marginTop: "2rem",
-        background: "#141414",
-        padding: "2rem",
-        borderRadius: "16px",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
-      }}
-    >
-      <h2 style={{ marginBottom: "1.5rem" }}>Past Quizzes</h2>
+    <div className="history-section">
+      <h2>Past Quizzes</h2>
 
       {history.length === 0 ? (
-        <p style={{ opacity: 0.6 }}>No quizzes generated yet.</p>
+        <p className="empty-text">No quizzes generated yet.</p>
       ) : (
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-          }}
-        >
-          <thead>
-            <tr style={{ textAlign: "left", color: "#aaa" }}>
-              <th style={{ padding: "0.75rem" }}>ID</th>
-              <th style={{ padding: "0.75rem" }}>Title</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {history.map((item) => (
-              <tr
-                key={item.id}
-                style={{
-                  borderTop: "1px solid #222",
-                  transition: "background 0.2s ease",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = "#1c1c1c")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = "transparent")
-                }
-              >
-                <td style={{ padding: "0.75rem", color: "#ccc" }}>
-                  {item.id}
-                </td>
-                <td style={{ padding: "0.75rem", fontWeight: 500 }}>
-                  {item.title}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="history-grid">
+          {history.map((quiz) => (
+            <div key={quiz.id} className="history-card">
+              <span className="quiz-id">#{quiz.id}</span>
+              <h3 className="quiz-title">{quiz.title}</h3>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
 }
-
-export default History;

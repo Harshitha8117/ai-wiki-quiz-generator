@@ -1,0 +1,50 @@
+.history-section {
+  margin-top: 3rem;
+}
+
+.history-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+}
+
+.empty-text {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Grid layout */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* Card */
+.history-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ID badge */
+.quiz-id {
+  font-size: 0.75rem;
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+/* Title */
+.quiz-title {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color: #ffffff;
+}
+ 
