@@ -1,45 +1,102 @@
-# AI Wiki Quiz Generator
+# 🧠 AI Wiki Quiz Generator
 
-## 📌 Overview
-
-AI Wiki Quiz Generator is a full-stack web application that generates quizzes from Wikipedia articles.
-Users can input a Wikipedia URL, automatically generate quiz questions, and view a history of previously generated quizzes.
-
-The application demonstrates end-to-end integration of a **FastAPI backend**, **React frontend**, **database persistence**, and **API documentation**.
+An end-to-end web application that generates multiple-choice quizzes from Wikipedia articles using AI.
+Built with **FastAPI**, **React (Vite)**, and deployed using **Render** and **Netlify**.
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo
 
-* Generate quiz questions from any Wikipedia article
-* Multiple-choice questions with correct answers
-* Persistent storage of generated quizzes
-* History view of past quizzes
-* Caching to avoid duplicate processing of the same URL
-* RESTful API with Swagger documentation
-* Clean and minimal frontend UI
+* **Frontend (Netlify)**
+  👉 [https://ai-wiki-quiz-harshitha.netlify.app](https://ai-wiki-quiz-harshitha.netlify.app)
+
+* **Backend API (Render)**
+  👉 [https://ai-wiki-quiz-backend-f99n.onrender.com](https://ai-wiki-quiz-backend-f99n.onrender.com)
+  👉 Swagger Docs: [https://ai-wiki-quiz-backend-f99n.onrender.com/docs](https://ai-wiki-quiz-backend-f99n.onrender.com/docs)
 
 ---
 
-## 🛠️ Tech Stack
+## 📌 Features
 
-### Backend
+* 🔗 Accepts a Wikipedia article URL as input
+* 🤖 Uses AI to generate quiz questions from article content
+* 🧩 Displays multiple-choice questions with answers
+* 🕒 Stores previously generated quizzes
+* 📜 Shows quiz history in a clean UI
+* 🌐 Fully deployed (Frontend + Backend)
+* 📱 Responsive dark-themed interface
 
-* **Python**
-* **FastAPI**
-* **SQLAlchemy**
-* **SQLite**
-* **BeautifulSoup** (Wikipedia scraping)
+---
+
+## 🛠 Tech Stack
 
 ### Frontend
 
-* **React**
-* **Vite**
+* React (Vite)
+* JavaScript
+* CSS (custom dark theme)
+* Deployed on **Netlify**
 
-### Tools & Others
+### Backend
 
-* Swagger UI (API documentation)
-* Git & GitHub
+* FastAPI
+* SQLAlchemy + SQLite
+* CORS-enabled REST API
+* Deployed on **Render**
+
+---
+
+## 🧪 Sample Input URLs
+
+Use any valid Wikipedia article, for example:
+
+```
+https://en.wikipedia.org/wiki/Computer_science
+https://en.wikipedia.org/wiki/Artificial_intelligence
+https://en.wikipedia.org/wiki/Alan_Turing
+https://en.wikipedia.org/wiki/Machine_learning
+```
+
+---
+
+## 📸 Screenshots (Assignment Requirement)
+
+The repository includes **all required screenshots**:
+
+1. **Generate Quiz View**
+
+   * Wikipedia URL input
+   * Generated quiz questions visible
+
+2. **History View**
+
+   * Table / cards showing past quizzes
+
+3. **Swagger API Response**
+
+   * `/quiz` endpoint JSON response
+
+📂 Screenshots are included in the repository root and also uploaded to Google Drive.
+
+---
+
+## ⚙️ Local Setup (Optional)
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
@@ -47,10 +104,10 @@ The application demonstrates end-to-end integration of a **FastAPI backend**, **
 
 ```
 ai-wiki-quiz-generator/
+│
 ├── backend/
 │   ├── app/
 │   │   ├── routers/
-│   │   ├── services/
 │   │   ├── models.py
 │   │   ├── database.py
 │   │   └── main.py
@@ -60,8 +117,7 @@ ai-wiki-quiz-generator/
 │   ├── src/
 │   │   ├── pages/
 │   │   ├── services/
-│   │   ├── App.jsx
-│   │   └── main.jsx
+│   │   └── App.jsx
 │   └── package.json
 │
 ├── screenshots/
@@ -74,117 +130,42 @@ ai-wiki-quiz-generator/
 
 ---
 
-## ⚙️ How to Run the Project Locally
+## 🔐 CORS & Deployment Notes
 
-### 1️⃣ Backend Setup
-
-```bash
-cd backend
-pip install -r requirements.txt
-python -m uvicorn app.main:app --reload
-```
-
-Backend will be available at:
-
-```
-http://localhost:8000
-```
-
-Swagger API Docs:
-
-```
-http://localhost:8000/docs
-```
+* Backend allows cross-origin requests for frontend communication
+* Environment-safe configuration used for deployment
+* SQLite used for simplicity (assignment scope)
 
 ---
 
-### 2️⃣ Frontend Setup
+## ✅ Assignment Status
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend will be available at:
-
-```
-http://localhost:5173
-```
+* [x] Core functionality implemented
+* [x] UI completed
+* [x] Backend API functional
+* [x] History persistence
+* [x] Screenshots captured
+* [x] GitHub repository updated
+* [x] Deployed frontend & backend
 
 ---
 
-## 🔗 API Endpoints
-
-### Generate Quiz
-
-```
-POST /quiz
-```
-
-**Request Body**
-
-```json
-{
-  "url": "https://en.wikipedia.org/wiki/Alan_Turing"
-}
-```
-
-### Get Quiz History
-
-```
-GET /history
-```
-
----
-
-## 🖼️ Screenshots
-
-### Generate Quiz
-
-![Generate Quiz](screenshots/1_generate_quiz.png)
-
-### Quiz History
-
-![History](screenshots/2_history.png)
-
-### API Response (Swagger)
-
-![API Response](screenshots/3_api_response.png)
-
----
-
-## 🧠 Design Decisions
-
-* **Caching** is implemented to prevent duplicate quiz generation for the same Wikipedia URL.
-* **Graceful error handling** ensures the application does not crash on API or scraping failures.
-* **CORS configuration** enables smooth frontend–backend communication.
-* The UI is kept minimal to focus on functionality and clarity.
-
----
-
-## 📌 Notes
-
-* The application is run locally; screenshots are provided as proof of functionality.
-* The database uses SQLite for simplicity and easy setup.
-* The project is structured to allow easy extension (e.g., more questions, difficulty levels, user authentication).
-
----
-
-## ✅ Assignment Completion
-
-This project fulfills all the requirements mentioned in the assignment:
-
-* Quiz generation from Wikipedia
-* API integration
-* Frontend UI
-* Persistent history
-* Documentation and screenshots
-
----
-
-### 👤 Author
+## 👩‍💻 Author
 
 **Harshitha**
+GitHub: [https://github.com/Harshitha8117](https://github.com/Harshitha8117)
 
 ---
+
+## 🏁 Final Notes
+
+This project was built as part of an assignment to demonstrate:
+
+* Full-stack development skills
+* API design
+* Frontend-backend integration
+* Deployment readiness
+* Clean, readable code structure
+
+✨ Thank you for reviewing!
+
